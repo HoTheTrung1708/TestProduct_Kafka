@@ -9,9 +9,9 @@ namespace Baitaptest.Extensions
         {
             using (var scope = host.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
-                var context = services.GetService<TInMemoryContext>();
-                var dbContext = services.GetRequiredService<TDbContext>();
+                var services    = scope.ServiceProvider;
+                var context     = services.GetService<TInMemoryContext>();
+                var dbContext   = services.GetRequiredService<TDbContext>();
                 seeder(context, dbContext);
             }
             return host;

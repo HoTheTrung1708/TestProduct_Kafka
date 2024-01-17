@@ -1,7 +1,4 @@
-﻿using Baitaptest.IServices;
-using Baitaptest.Memory;
-using Baitaptest.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Baitaptest.Memory;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Baitaptest.Controllers

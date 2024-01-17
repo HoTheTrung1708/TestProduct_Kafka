@@ -6,7 +6,9 @@ namespace Baitaptest.IServices
     public interface ITableProduct
     {
         Product InsertProduct(Product p);
-        public Product Add(Product product);
-        public List<Product> GetProducts();
+
+        public Product GetQuantity(int id);
+
+        public Product UpdateQuantity(Product product);
     }
 }
