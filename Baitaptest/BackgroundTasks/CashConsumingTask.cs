@@ -11,15 +11,15 @@ namespace Baitaptest.BackgroundTasks
     public class CashConsumingTask : IConsumingTask<string, string>
     {
         private readonly ITableProduct _tableProduct;
-       
-
-        public CashConsumingTask(ITableProduct itableProduct)
+        private readonly ILogger<Product> _logger;
+        public CashConsumingTask(ITableProduct tableProduct, ILogger<Product> logger)
         {
-            _tableProduct = itableProduct;
+            _tableProduct = tableProduct;
+            _logger = logger;
         }
-        public Task ExecuteAsync(ConsumeResult<string, string> result)
+
+        public void Execute(ConsumeResult<string, string> result)
         {
-            
             Headers headers = result.Message.Headers;
             var productEvent = "";
             // Convert header keys and values to strings
@@ -30,10 +30,9 @@ namespace Baitaptest.BackgroundTasks
             if (productEvent == "InsertProduct")
             {
                 var p = JsonSerializer.Deserialize<Product>(result.Message.Value);
-                _tableProduct.InsertProduct(p);   
+                _tableProduct.InsertProduct(p);
             }
-            else
-            if (productEvent == "UpdateQuantity")
+            else if (productEvent == "UpdateQuantity")
             {
                 var p = JsonSerializer.Deserialize<UpdateQuantity>(result.Message.Value);
                 var productInMem = _tableProduct.GetQuantity(p.ProductId);
@@ -42,16 +41,21 @@ namespace Baitaptest.BackgroundTasks
                     if (p.Increase == true)
                     {
                         productInMem.Quantity = productInMem.Quantity + p.Quantity;
-                        _tableProduct.UpdateQuantity(productInMem);
                     }
                     else
                     {
-                        productInMem.Quantity = productInMem.Quantity - p.Quantity;
-                        _tableProduct.UpdateQuantity(productInMem);
+                        if (productInMem.Quantity < p.Quantity)
+                        {
+                            _logger.LogError("deo am duoc");
+                        }
+                        else
+                        {
+                            productInMem.Quantity = productInMem.Quantity - p.Quantity;
+                        }
                     }
+                    _tableProduct.UpdateQuantity(productInMem);
                 }
             }
-            return null;
         }
     }
 }

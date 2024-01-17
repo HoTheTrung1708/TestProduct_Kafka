@@ -5,6 +5,7 @@ using Baitaptest.Memory;
 using Baitaptest.Models;
 using Baitaptest.Services;
 using Baitaptest.Settings;
+using Manonero.MessageBus.Kafka.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,7 +51,7 @@ app.LoadDataToMemory<TableProductMemory, ProductDbContext>((productInMe, dbConte
 
 app.UseKafkaMessageBus(messageBus =>
 {
-    messageBus.RunConsumerAsync("0");
+    messageBus.RunConsumer("0");
 });
 
 app.Run();
