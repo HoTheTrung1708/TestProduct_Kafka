@@ -10,17 +10,17 @@ namespace Baitaptest.BackgroundTasks
 {
     public class CashConsumingTask : IConsumingTask<string, string>
     {
-        private readonly ITableProduct _tableProduct;
+        private readonly ITableProduct    _tableProduct;
         private readonly ILogger<Product> _logger;
         public CashConsumingTask(ITableProduct tableProduct, ILogger<Product> logger)
         {
             _tableProduct = tableProduct;
-            _logger = logger;
+            _logger       = logger;
         }
 
         public void Execute(ConsumeResult<string, string> result)
         {
-            Headers headers = result.Message.Headers;
+             Headers headers = result.Message.Headers;
             var productEvent = "";
             // Convert header keys and values to strings
             foreach (var header in headers)
@@ -32,10 +32,11 @@ namespace Baitaptest.BackgroundTasks
                 var p = JsonSerializer.Deserialize<Product>(result.Message.Value);
                 _tableProduct.InsertProduct(p);
             }
+
             else if (productEvent == "UpdateQuantity")
             {
                 var p = JsonSerializer.Deserialize<UpdateQuantity>(result.Message.Value);
-                var productInMem = _tableProduct.GetQuantity(p.ProductId);
+                var productInMem = _tableProduct.GetProduct(p.ProductId);
                 if (productInMem != null)
                 {
                     if (p.Increase == true)
@@ -54,6 +55,25 @@ namespace Baitaptest.BackgroundTasks
                         }
                     }
                     _tableProduct.UpdateQuantity(productInMem);
+                }
+            }
+
+            else if (productEvent == "UpdatePrice")
+            {
+                var p = JsonSerializer.Deserialize<UpdateQuantity>(result.Message.Value);
+                var productInMem = _tableProduct.GetProduct(p.ProductId);
+
+                if (productInMem != null)
+                {
+                    if (p.Price < 0)
+                    {
+                        _logger.LogError("Price khong the la so âm!!!");
+                    }
+                    else
+                    {
+                        productInMem.Price = p.Price;
+                        _tableProduct.UpdatePrice(productInMem);
+                    }
                 }
             }
         }

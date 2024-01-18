@@ -18,7 +18,7 @@ namespace Baitaptest.Controllers
         [HttpGet]
         public  IActionResult GetProduct()
         {
-            var product =  _memory.Memory.Values.ToList();
+            var product = _memory.Memory.Values.ToList();
             return Ok(product);
         }
     }

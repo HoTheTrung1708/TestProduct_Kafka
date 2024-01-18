@@ -7,8 +7,10 @@ namespace Baitaptest.IServices
     {
         Product InsertProduct(Product p);
 
-        public Product GetQuantity(int id);
+        public Product GetProduct(int id);
 
         public Product UpdateQuantity(Product product);
+
+        public Product UpdatePrice(Product product);
     }
 }

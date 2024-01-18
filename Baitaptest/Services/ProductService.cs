@@ -15,7 +15,7 @@ namespace Baitaptest.Services
             _logger = logger;
         }
 
-        public Product GetQuantity(int id)
+        public Product GetProduct(int id)
         {
             var p = _memory.Memory.FirstOrDefault(x=>x.Value.Id == id).Value;
             return p;
@@ -27,17 +27,19 @@ namespace Baitaptest.Services
             return p;
         }
 
+        public Product UpdatePrice(Product product)
+        {
+            _memory.Memory.TryGetValue(product.Id.ToString(), out product);
+
+            return product;
+        }
+
         public Product UpdateQuantity(Product product)
         {
-            var pr = GetQuantity(product.Id);
-            if(pr != null)
-            {
-                _logger.LogError("Product khong ton tai");
-            }
-            else
-            {
-                _memory.Memory.TryGetValue(pr.Id.ToString(), out product);
-            }
+            var pr = GetProduct(product.Id);
+   
+           _memory.Memory.TryGetValue(pr.Id.ToString(), out product);
+            
             return pr;
         }
     }
