@@ -29,6 +29,10 @@ builder.Services.AddKafkaConsumers(consumerBuidel =>
 {
     consumerBuidel.AddConsumer<CashConsumingTask>(appSetting.GetConsumerSetting("0"));
 });
+builder.Services.AddKafkaProducers(producerBuidel =>
+{
+    producerBuidel.AddProducer(appSetting.GetProducerSetting("0"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
