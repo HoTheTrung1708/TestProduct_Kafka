@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Baitaptest.Models
+﻿namespace Baitaptest.Models
 {
     public class Product
     {

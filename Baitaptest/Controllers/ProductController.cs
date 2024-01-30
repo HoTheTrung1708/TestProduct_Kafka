@@ -1,7 +1,4 @@
-﻿using Baitaptest.Memory;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Baitaptest.Controllers
+﻿namespace Baitaptest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

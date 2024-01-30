@@ -1,6 +1,4 @@
-﻿using Baitaptest.Models;
-
-namespace Baitaptest.Memory
+﻿namespace Baitaptest.Memory
 {
     public class TableProductMemory
     {

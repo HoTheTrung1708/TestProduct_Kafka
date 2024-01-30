@@ -1,7 +1,4 @@
-﻿using Baitaptest.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace Baitaptest.Memory
+﻿namespace Baitaptest.Memory
 {
     public class ProductMemorySeedAsync
     {

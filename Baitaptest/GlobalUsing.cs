@@ -1,0 +1,11 @@
+﻿global using Baitaptest.DTOs;
+global using Baitaptest.IServices;
+global using Baitaptest.Models;
+global using Confluent.Kafka;
+global using Manonero.MessageBus.Kafka.Abstractions;
+global using System.Text;
+global using System.Text.Json;
+global using Baitaptest.Memory;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using Manonero.MessageBus.Kafka.Settings;

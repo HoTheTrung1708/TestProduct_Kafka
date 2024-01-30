@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Baitaptest.Models
+﻿namespace Baitaptest.Models
 {
     public class ProductDbContext:DbContext
     {

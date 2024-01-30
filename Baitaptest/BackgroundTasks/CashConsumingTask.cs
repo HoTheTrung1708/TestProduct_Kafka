@@ -1,12 +1,4 @@
-﻿using Baitaptest.DTOs;
-using Baitaptest.IServices;
-using Baitaptest.Models;
-using Confluent.Kafka;
-using Manonero.MessageBus.Kafka.Abstractions;
-using System.Text;
-using System.Text.Json;
-
-namespace Baitaptest.BackgroundTasks
+﻿namespace Baitaptest.BackgroundTasks
 {
     public class CashConsumingTask : IConsumingTask<string, string>
     {

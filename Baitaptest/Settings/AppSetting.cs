@@ -1,6 +1,4 @@
-﻿using Manonero.MessageBus.Kafka.Settings;
-
-namespace Baitaptest.Settings
+﻿namespace Baitaptest.Settings
 {
     public class AppSetting
     {

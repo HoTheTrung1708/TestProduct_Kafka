@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Baitaptest.Extensions
+﻿namespace Baitaptest.Extensions
 {
     public static class HostExtention
     {

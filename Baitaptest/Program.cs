@@ -1,12 +1,8 @@
 using Baitaptest.BackgroundTasks;
 using Baitaptest.Extensions;
-using Baitaptest.IServices;
-using Baitaptest.Memory;
-using Baitaptest.Models;
 using Baitaptest.Services;
 using Baitaptest.Settings;
 using Manonero.MessageBus.Kafka.Extensions;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

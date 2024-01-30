@@ -1,7 +1,4 @@
-﻿using Baitaptest.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace Baitaptest.IServices
+﻿namespace Baitaptest.IServices
 {
     public interface ITableProduct
     {

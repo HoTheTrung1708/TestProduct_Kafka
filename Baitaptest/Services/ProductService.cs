@@ -1,10 +1,4 @@
-﻿using Baitaptest.IServices;
-using Baitaptest.Memory;
-using Baitaptest.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-
-namespace Baitaptest.Services
+﻿namespace Baitaptest.Services
 {
     public class ProductService : ITableProduct
     {
