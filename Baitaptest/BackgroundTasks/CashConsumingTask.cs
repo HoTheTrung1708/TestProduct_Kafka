@@ -22,6 +22,7 @@ namespace Baitaptest.BackgroundTasks
 
         public void Execute(ConsumeResult<string, string> result)
         {
+
             var producer = _producerManager.GetProducer<string, string>("0");
             Headers headers = result.Message.Headers;
             var productEvent = "";

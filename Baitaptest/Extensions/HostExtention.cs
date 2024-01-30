@@ -5,7 +5,7 @@ namespace Baitaptest.Extensions
     public static class HostExtention
     {
         public static IHost LoadDataToMemory<TInMemoryContext, TDbContext>(this IHost host, Action<TInMemoryContext, TDbContext> seeder)
-       where TDbContext : DbContext
+       where TDbContext : DbContext   
         {
             using (var scope = host.Services.CreateScope())
             {

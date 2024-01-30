@@ -1,6 +1,7 @@
 ﻿using Baitaptest.IServices;
 using Baitaptest.Memory;
 using Baitaptest.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Baitaptest.Services
@@ -9,12 +10,14 @@ namespace Baitaptest.Services
     {
         private readonly TableProductMemory _memory;
         private readonly ILogger<Product> _logger;
+        private readonly DbContext _dbContext;
         public ProductService(TableProductMemory memory, ILogger<Product> logger)
         {
             _memory = memory;
             _logger = logger;
         }
 
+        
         public Product GetProduct(int id)
         {
             var p = _memory.Memory.FirstOrDefault(x=>x.Value.Id == id).Value;
@@ -42,5 +45,12 @@ namespace Baitaptest.Services
             
             return pr;
         }
+        public Product AddProductOracle(Product product)
+        {
+            _dbContext.Add(product);
+            _dbContext.SaveChanges();
+            return product;
+        }
+
     }
 }

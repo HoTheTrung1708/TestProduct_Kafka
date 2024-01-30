@@ -28,6 +28,7 @@ builder.Services.AddSingleton<TableProductMemory>();
 builder.Services.AddKafkaConsumers(consumerBuidel =>
 {
     consumerBuidel.AddConsumer<CashConsumingTask>(appSetting.GetConsumerSetting("0"));
+    //consumerBuidel.AddConsumer<ConsumingTask>(appSetting.GetConsumerSetting("1"));
 });
 builder.Services.AddKafkaProducers(producerBuidel =>
 {
@@ -56,6 +57,7 @@ app.LoadDataToMemory<TableProductMemory, ProductDbContext>((productInMe, dbConte
 app.UseKafkaMessageBus(messageBus =>
 {
     messageBus.RunConsumer("0");
+    //messageBus.RunConsumer("1");
 });
 
 app.Run();

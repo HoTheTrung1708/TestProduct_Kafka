@@ -12,5 +12,8 @@ namespace Baitaptest.IServices
         public Product UpdateQuantity(Product product);
 
         public Product UpdatePrice(Product product);
+
+        public  Product AddProductOracle(Product product);
+
     }
 }
